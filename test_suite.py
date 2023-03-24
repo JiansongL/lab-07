@@ -24,7 +24,7 @@ for i in range(5):
 
 # Light sensor
 input("Press any key to do the test 2:")
-threshold = 500
+threshold = 100
 interval = time.time()
 while time.time() - interval < 5:
 	light = mcp.read_adc(light_sensor_Ch)
@@ -45,12 +45,13 @@ for i in range(4):
 
 # Sound sensor
 input("Press any key to do the test 4:")
+sound_threshold = 300
 interval = time.time()
 while time.time() - interval < 5:
 	GPIO.output(11, GPIO.LOW)
 	sound = mcp.read_adc(sound_sensor_Ch)
 	print(sound)
-	if sound >= threshold:
+	if sound >= sound_threshold:
                 GPIO.output(11, GPIO.HIGH)
 	time.sleep(0.1)
 
